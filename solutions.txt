@@ -1,0 +1,40 @@
+#1
+	--Simple grep filtering first word
+	grep '^Z' cities.txt
+
+#2
+	--Another simple grep filter, just adding end of word filter
+	grep -i 'gan\>' cities.txt
+
+#3
+	--Used egrep so I could use pipe for OR
+	grep -cE '^A|^D|^E' cities.txt
+
+#4
+	--had to use \< instead of ^ because it can be multiword state
+	grep -ic '\<.ar' cities.txt
+
+#5
+	--pretty simple, just add start with C, then used not flag
+	grep -icv '^C' cities.txt
+
+#6
+	--egrip wasn't needed, just checked that there was no space followed by 14 characters. the second number could be a maximum value, but since its \ there is no max
+	grep '[\ ]\{14,\}' cities.txt	
+
+#
+	--Really simple greg, just filter first character of word
+	grep -ic '^B' cities.txt
+
+#8
+	--had to use o flag to restrict it to only the letters d, then had to use wc cause some letters d may have been on the same line causing c flag to not work
+	grep -o 'd' cities.txt | wc -l
+
+#9
+	--used the parens to save the character and check for doubles at the end of the word
+	grep -E '(.)\1\>' cities.txt
+
+#10
+	--used to groups to save the character with a . for any character in the center
+	grep -iE '\<(.)(.).\2\1\>' cities.txt			
+
